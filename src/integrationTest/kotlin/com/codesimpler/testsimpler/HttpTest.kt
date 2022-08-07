@@ -8,9 +8,7 @@ import io.kotest.assertions.assertSoftly
 import io.kotest.matchers.shouldBe
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.junit.jupiter.api.fail
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -45,10 +43,5 @@ class HttpTest {
             response.code shouldBe httpStatus.value
             response.body?.string() shouldBe body
         }
-    }
-
-    @Test
-    fun `fake failure()`() {
-        fail("For testing")
     }
 }
