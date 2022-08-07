@@ -51,5 +51,4 @@ class HttpTest {
     fun `fake failure()`() {
         fail("For testing")
     }
-
 }
