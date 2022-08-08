@@ -1,0 +1,28 @@
+name: Release Procedure
+on:
+  push:
+    branches: [ main ]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Validate Gradle
+        uses: gradle/wrapper-validation-action@v1
+      - name: Run Validation
+        run: ./gradlew check
+      - name: Prepare Release
+        run: ./gradlew shadowJar dokkaHtml dokkaJavadoc sourcesJar javadocJar
+      - name: Deploy Documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/dokka/html
+      - name: Deploy GitHub Release
+      - name: Deploy Artifact
+        run: ./gradlew publish
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
