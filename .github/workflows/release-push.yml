@@ -19,7 +19,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/dokka/html
-      - name: Deploy GitHub Release
       - name: Deploy Artifact
         run: ./gradlew publish
         env:
