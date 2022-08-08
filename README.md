@@ -1,2 +1,3 @@
-# Test-Simpler
-Tools and extensions to allow simpler testing in your application.
+# Test Simpler
+
+Libraries to facilitate simpler testing in your JVM projects.
