@@ -13,7 +13,7 @@ jobs:
       - name: Run Validation
         run: ./gradlew check
       - name: Prepare Release
-        run: ./gradlew shadowJar dokkaHtml dokkaJavadoc sourcesJar javadocJar
+        run: ./gradlew shadowJar sourcesJar javadocJar
       - name: Deploy Documentation
         uses: peaceiris/actions-gh-pages@v3
         with:
