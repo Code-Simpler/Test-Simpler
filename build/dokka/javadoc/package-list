@@ -1,0 +1,8 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:com.codesimpler.testsimpler/HttpStatus.Companion///PointingToDeclaration/com/codesimpler/testsimpler/HttpStatus.Companion.html
+$dokka.location:com.codesimpler.testsimpler/HttpStatus.ResponseClass///PointingToDeclaration/com/codesimpler/testsimpler/HttpStatus.ResponseClass.html
+$dokka.location:com.codesimpler.testsimpler/SimpleMockServerRepository.Companion///PointingToDeclaration/com/codesimpler/testsimpler/SimpleMockServerRepository.Companion.html
+$dokka.location:com.codesimpler.testsimpler/TestSimplerExtension.Companion///PointingToDeclaration/com/codesimpler/testsimpler/TestSimplerExtension.Companion.html
+com.codesimpler.testsimpler
+
