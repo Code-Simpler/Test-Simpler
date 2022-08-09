@@ -102,7 +102,7 @@ internal class MyServiceTest {
 }
 ```
 
-Take a look at the [Documentation]() for more details and to see the other utilities available.
+Take a look at the [Documentation](https://code-simpler.github.io/Test-Simpler/) for more details and to see the other utilities available.
 
 Don't want all this? This test extension also provides an instance of [MockWebServer](https://github.com/square/okhttp/blob/master/mockwebserver/src/main/kotlin/mockwebserver3/MockWebServer.kt) 
 via [JUnit's Dependency Injection](https://junit.org/junit5/docs/current/user-guide/#writing-tests-dependency-injection)
@@ -162,7 +162,7 @@ fun `my test()`() {
     
     val mockServiceEndpoint = uri()
     
-    // ... make a HTTP call with the above endpoint!
+    // ... make an HTTP call with the above endpoint!
     
 }
 
