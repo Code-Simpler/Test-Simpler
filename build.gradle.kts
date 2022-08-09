@@ -3,6 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.dokka.base.DokkaBase
 import org.jetbrains.dokka.base.DokkaBaseConfiguration
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import java.net.URI
 import java.net.URL
 
@@ -36,7 +37,6 @@ dependencies {
     implementation("com.squareup.okhttp3:mockwebserver:4.10.0")
 
     testImplementation(kotlin("test"))
-
 }
 
 testing {
@@ -49,6 +49,7 @@ testing {
                     implementation(project)
                     implementation("io.kotest:kotest-assertions-core-jvm:5.4.1")
                     implementation("io.mockk:mockk:1.12.5")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
                 }
             }
         }
@@ -56,9 +57,6 @@ testing {
         val integrationTest by registering(JvmTestSuite::class)
         val integrationTestImplementation by configurations.getting {
             extendsFrom(configurations.testImplementation.get())
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-            }
         }
 
     }
@@ -99,6 +97,15 @@ tasks.named("check") {
     dependsOn(tasks.named("jacocoTestCoverageVerification"))
 }
 
+tasks.named<ShadowJar>("shadowJar") {
+    archiveClassifier.set("")
+    minimize()
+}
+
+tasks.named("build") {
+    finalizedBy("shadowJar")
+}
+
 java {
     withJavadocJar()
     withSourcesJar()
@@ -110,9 +117,7 @@ publishing {
         create<MavenPublication>("maven") {
             artifactId = "test-simpler"
 
-            artifact(tasks["shadowJar"])
-            artifact(tasks["sourcesJar"])
-            artifact(tasks["javadocJar"])
+            from(components["java"])
 
             pom {
                 name.set("Test Simpler")
